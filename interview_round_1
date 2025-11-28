@@ -1,0 +1,78 @@
+Question: How to make Employee  class immutable in java ?
+        class Employee {
+            String name;
+            int age;
+            Address address;
+        }
+
+        class Address{
+            String name;
+            String description;
+     }
+
+Solution:  
+class Employee {
+    final String name;
+    final int age;
+    final Address address;
+
+    public Employee(String name, int age, Address address) {
+        this.name = name;
+        this.age = age;
+        this.address = address;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public Address getAddress() {
+    
+        //Returning a copy of Address , instead of real object
+        
+        var tempAddress = new Address();
+        tempAddress.name = address.name;
+        tempAddress.description = address.description;
+        return tempAddress;
+    }
+}
+
+class Address {
+    String name;
+    String description;
+
+    public Address() {
+    }
+
+    public Address(String name, String description) {
+        this.name = name;
+        this.description = description;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+}
+
+class TestMain{
+    static void main() {
+        Employee employee = new Employee("vinod",35, new Address("new delhi","vikashnager"));
+    }
+}
+
