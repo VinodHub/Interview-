@@ -1,0 +1,19 @@
+Question : can we modify a collection without crating a copy in java??
+Solution : Yes, it is possible to modify a collection in Java without creating a copy, provided that the collection itself is mutable.
+        
+        import java.util.ArrayList;
+        import java.util.List;
+        
+        public class CollectionModification {
+            public static void main(String[] args) {
+                List<String> originalList = new ArrayList<>();
+                originalList.add("Apple");
+                originalList.add("Banana");
+        
+                // Modify the collection directly
+                originalList.add("Cherry"); 
+                originalList.remove("Apple");
+        
+                System.out.println(originalList); // Output: [Banana, Cherry]
+            }
+        }
