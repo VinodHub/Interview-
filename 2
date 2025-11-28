@@ -1,0 +1,32 @@
+Question : which logic is implemented in the below code ?
+            class User {
+                public static void print() {
+                    System.out.println("Inside user print");
+                }
+            
+                public static void display() {
+                    print();
+                }
+            }
+            
+            
+            class Employee extends User {
+                public static void print() {
+                    System.out.println("Inside Employee print");
+                }
+            
+                public static void display() {
+                    print();
+                }
+            }
+            
+            
+            class TestMain {
+                static void main() {
+                      User.display();
+                      Employee.display();
+            
+                }
+            }
+sloution : Method  Hiding ( static methods cannot be overridden. When a subclass declares a static method with the same signature as a static method in its superclass, it is called "method hiding" rather than "method overriding.)
+            
