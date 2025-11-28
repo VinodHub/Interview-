@@ -25,3 +25,23 @@ Answer : no output will be produced .
                Missing terminal operation: In the test method, the stream().map(...) call is not followed by any terminal operation
               (e.g., forEach, collect, toArray, reduce, etc.). Without a terminal operation, the map function, including the 
               System.out.println statement within it, will never be executed.
+
+              import java.util.ArrayList;
+          import java.util.Arrays;
+          import java.util.List;
+          
+          class TestMain {
+          
+              public void test(List<Integer> integerList){
+                  integerList.stream().map(a->{
+                      System.out.println("value of a is : "+a);
+                      return a.toString();
+                  }).forEach(s->{});  // This Terminal operation is required
+              }
+              static void main() {
+                  Integer input[] = {1, 2, 3, 4, 5};
+                  List<Integer> integerList = new ArrayList<>(Arrays.asList(input));
+                  TestMain main = new TestMain();
+                  main.test(integerList);
+              }
+          }
