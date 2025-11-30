@@ -1,0 +1,5 @@
+Chek  a String is pallindrome or not using java 8??
+
+String cleanedText = text.toLowerCase(); // Convert to lowercase for case-insensitive check
+        return IntStream.range(0, cleanedText.length() / 2)
+                .noneMatch(i -> cleanedText.charAt(i) != cleanedText.charAt(cleanedText.length() - 1 - i));
