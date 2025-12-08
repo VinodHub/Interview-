@@ -1,0 +1,6 @@
+print reverse order
+
+IntStream.rangeClosed(1, 100) // Generate numbers from 1 to 100
+                .boxed() // Convert to Stream<Integer> to allow sorting
+                .sorted(Comparator.naturalOrder()) // Sort in descending order
+                .forEach(System.out::println);
