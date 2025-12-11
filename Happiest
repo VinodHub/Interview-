@@ -1,0 +1,27 @@
+import java.util.HashMap;
+
+class Person {
+    String name;
+
+    Person(String name) {
+        this.name = name;
+    }
+}
+
+class TestMain {
+    static void main() {
+        HashMap<Person, String> map = new HashMap<>();
+        Person p1 = new Person("John");
+        map.put(p1, "Engineer");
+        System.out.println(map.get(new Person("John")));
+    }
+}
+
+
+class A {
+    void m() throws IOException {}
+}
+ 
+class B extends A {
+    void m() throws Exception {}  
+}
