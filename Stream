@@ -1,4 +1,4 @@
-dropWhile   && takewhile
+dropWhile   && takewhile  && allMatch && noneMatch && anyMatch
 
 
 Stream<Stream<String>> inputs = Stream.of(Stream.of("vinod"),Stream.of("sharma"));
