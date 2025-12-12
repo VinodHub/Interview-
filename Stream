@@ -1,5 +1,13 @@
 dropWhile   && takewhile
 
+
+Stream<Stream<String>> inputs = Stream.of(Stream.of("vinod"),Stream.of("sharma"));
+inputs.map(e-> e).forEach(System.out::println);
+inputs.flatMap(e-> e).forEach(System.out::println);
+
+
+
+
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
