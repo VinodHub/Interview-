@@ -1,1 +1,111 @@
 dropWhile   && takewhile
+
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
+
+class Person implements Comparable<Person> {
+    String name;
+    int id;
+
+    public Person(String name, int id) {
+        this.name = name;
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "name='" + name + '\'' +
+                ", id=" + id +
+                '}';
+    }
+
+    @Override
+    public int compareTo(Person o) {
+        if (this.id > o.id) {
+            return 1;
+        } else if (this.id < o.id) {
+            return -1;
+        }
+        return (this.name.compareTo(o.name));
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        if (object == null || getClass() != object.getClass()) return false;
+        Person person = (Person) object;
+        return id == person.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(id);
+    }
+}
+
+class PersonComparator implements Comparator<Person> {
+    @Override
+    public int compare(Person o1, Person o2) {
+        if (o1.id > o2.id) {
+            return 1;
+        } else if (o1.id < o2.id) {
+            return -1;
+        }
+        return (o1.name.compareTo(o2.name));
+    }
+}
+
+public class TestMain {
+    public static void main(String[] args) {
+        Person person1 = new Person("vinod1", 600);
+        Person person5 = new Person("vinod5", 500);
+        Person person4 = new Person("vinod4", 489);
+        Person person3 = new Person("vinod3", 987);
+        Person person2 = new Person("vinod2", 750);
+        Person person6 = new Person("vinod6", 600);
+        List<Person> personList = new ArrayList<>();
+        personList.add(person1);
+        personList.add(person2);
+        personList.add(person3);
+        personList.add(person4);
+        personList.add(person5);
+        personList.add(person6);
+        Collections.sort(personList);
+        Stream<Person> stream = personList.stream().takeWhile(p -> p.id < 500);
+        stream.forEach(System.out::println);
+
+
+
+
+
+        //personList.stream().limit(1).sorted(new PersonComparator()).collect(Collectors.toCollection(LinkedHashSet::new)).forEach(System.out::println);
+        
+       //personList.stream().sorted(Comparator.comparing(Person::getName).thenComparing(Person::getId)).forEach(System.out::println);
+      // personList.sort(new PersonComparator());
+
+        //personList.forEach(System.out::println);
+//        IntStream.rangeClosed(1,100)
+//                .boxed().sorted(Collections.reverseOrder())
+//                .forEach(System.out::println);
+
+
+    }
+}
